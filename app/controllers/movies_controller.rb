@@ -2,6 +2,7 @@ class MoviesController < ApplicationController
   def new
     @movie = Movie.new
   end
+
   def index
     @movies = Movie.order(created_at: :desc)
     respond_to do |format|
@@ -9,9 +10,11 @@ class MoviesController < ApplicationController
       format.html
     end
   end
+
   def show
     @movie = Movie.find(params.fetch(:id))
   end
+
   def create
     @movie = Movie.new(movie_params)
     if @movie.valid?
@@ -20,24 +23,30 @@ class MoviesController < ApplicationController
     else
       render "new"
     end
+  end
+
   def edit
     @movie = Movie.find(params.fetch(:id))
   end
+
   def update
-    @movie = Movie.find(params.fetch(:id))    
+    @movie = Movie.find(params.fetch(:id))
     if @movie.update(movie_params)
       redirect_to @movie, notice: "Movie updated successfully."
     else
       render "edit"
     end
   end
-end
-def movie_params
-  movie_params = params.require(:movie).permit(:title, :description)
-end
+
   def destroy
     @movie = Movie.find(params.fetch(:id))
     @movie.destroy
     redirect_to movies_url, notice: "Movie deleted successfully."
   end
+end
+
+private
+
+def movie_params
+  movie_params = params.require(:movie).permit(:title, :description)
 end
