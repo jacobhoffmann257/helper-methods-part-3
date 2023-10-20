@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
 
     <!-- Make it responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,8 +24,8 @@
   </head>
 
   <body>
-        <%# start bootstrap nav%>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <%# start bootstrap nav%>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <%= link_to "Helper Methods 3", root_path, class:"navbar-brand" %>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,7 +35,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-            <%= link_to "Movies", movies_path, class: "nav-link"%>
+              <%= link_to "Movies", movies_path, class: "nav-link"%>
             </li>
           </ul>
           <form class="d-flex" role="search">
@@ -46,20 +46,22 @@
       </div>
     </nav>
     <%# end of bootstrap navbar%>
-    <%# Notice %>
-    <% if notice.present? %>
-    <div class="alert alert-success" role="alert">
-      <%= notice %>
+    <%# div.class is the short cut to generate the code you want for this one it is div.container %>
+    <div class="container mt-4">
+      <%# Notice %>
+      <% if notice.present? %>
+        <div class="alert alert-success" role="alert">
+          <%= notice %>
+        </div>
+      <% end %>
+      <%# Alert %>
+      <% if alert.present?%>
+        <div class="alert alert-danger" role="alert">
+          <%= alert %>
+        </div>
+      <% end%>
+      <%# End of Messages(Alert/notice) %>
+      <%= yield %>
     </div>
-    <% end %>
-    <%# Alert %>
-    <% if alert.present?%>
-    <div class="alert alert-danger" role="alert">
-      <%= alert %>
-    </div>
-    <% end%>
-    <%# End of Alert/notice %>
-    
-    <%= yield %>
   </body>
 </html>
