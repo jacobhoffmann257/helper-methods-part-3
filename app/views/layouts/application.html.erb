@@ -46,13 +46,19 @@
       </div>
     </nav>
     <%# end of bootstrap navbar%>
-    <div style="color: green;">
+    <%# Notice %>
+    <% if notice.present? %>
+    <div class="alert alert-success" role="alert">
       <%= notice %>
     </div>
-
-    <div style="color: red;">
+    <% end %>
+    <%# Alert %>
+    <% if alert.present?%>
+    <div class="alert alert-danger" role="alert">
       <%= alert %>
     </div>
+    <% end%>
+    <%# End of Alert/notice %>
     
     <%= yield %>
   </body>
